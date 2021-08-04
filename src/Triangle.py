@@ -5,13 +5,24 @@ from Figure import Figure
 class Triangle(Figure):
     name = "triangle"
 
+    # def __init__(self, first_side, second_side, third_side):
+    #     if ((first_side < second_side + third_side) and (second_side < first_side + third_side)
+    #             and (third_side < first_side + second_side)):
+    #         self.first_side = first_side
+    #         self.second_side = second_side
+    #         self.third_side = third_side
+    #     else:
+    #         raise ValueError
+
     def __init__(self, first_side, second_side, third_side):
-        if (first_side > second_side + third_side) or (second_side > first_side + third_side) or (third_side > first_side + second_side):
-            name = None
-        else:
-            self.first_side = first_side
-            self.second_side = second_side
-            self.third_side = third_side
+        pass
+
+    def __new__(cls, first_side, second_side, third_side):
+        if (first_side < second_side + third_side) and (second_side < first_side + third_side) and (third_side < first_side + second_side):
+            cls.first_side = first_side
+            cls.second_side = second_side
+            cls.third_side = third_side
+            return super().__new__(cls)
 
     @property
     def area(self):
@@ -26,5 +37,7 @@ class Triangle(Figure):
 
 
 tr = Triangle(5, 6, 7)
-print(tr.area)
-print(tr.perimeter)
+print(type(tr))
+# print(tr.first_side, tr.second_side, tr.third_side)
+# print(tr.area)
+# print(tr.perimeter)
