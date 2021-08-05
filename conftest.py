@@ -22,11 +22,11 @@ def rectangle(request):
     return Rectangle(request.param[0], request.param[1])
 
 
-@pytest.fixture(params=[10, 0])
+@pytest.fixture(params=[10])
 def square(request):
     return Square(request.param)
 
 
-@pytest.fixture()
-def circle():
-    return Circle(3)
+@pytest.fixture(params=[3, 5])
+def circle(request):
+    return Circle(request.param)

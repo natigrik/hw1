@@ -32,6 +32,18 @@ def test_triangle_perimeter(triangle):
     assert triangle.perimeter == per.__round__(2)
 
 
+def test_triangle_add_area_square(triangle, square):
+    assert triangle.add_area(square) == triangle.area + square.area
+
+
+def test_triangle_add_area_rectangle(triangle, rectangle):
+    assert triangle.add_area(rectangle) == triangle.area + rectangle.area
+
+
+def test_triangle_add_area_circle(triangle, circle):
+    assert triangle.add_area(circle) == triangle.area + circle.area
+
+
 # def test_create_square(square):
 #     assert square
 #
