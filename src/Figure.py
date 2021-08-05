@@ -1,4 +1,4 @@
-class Figure():
+class Figure(object):
     name = None
     area = None
     perimeter = None

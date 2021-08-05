@@ -7,11 +7,11 @@ from Figure import Figure
 # fig = Figure()
 # print(fig)
 #
-# triangle = Triangle(3, 4, 7)
+triangle = Triangle(2, 3, 4)
 # print(type(triangle))
 # print(triangle.first_side, triangle.second_side, triangle.third_side)
-# print(triangle.area)
-# print(triangle.perimeter)
+print(triangle.area)
+print(triangle.perimeter)
 #
 # rectangle = Rectangle(10, 5)
 # print(rectangle.area)

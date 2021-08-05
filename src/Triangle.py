@@ -1,5 +1,5 @@
 import math
-from Figure import Figure
+from src.Figure import Figure
 
 
 class Triangle(Figure):
@@ -11,7 +11,7 @@ class Triangle(Figure):
 
     def __new__(cls, first_side, second_side, third_side):
         if (first_side <= second_side + third_side) and (second_side <= first_side + third_side) and (
-                third_side <= first_side + second_side):
+                third_side <= first_side + second_side) and first_side > 0 and second_side > 0 and third_side > 0:
             cls.first_side = first_side
             cls.second_side = second_side
             cls.third_side = third_side
