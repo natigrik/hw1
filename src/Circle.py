@@ -3,8 +3,10 @@ from Figure import Figure
 
 class Circle(Figure):
     name = "circle"
+    _abstract = False
 
     def __init__(self, radius):
+        super().__init__()
         self.radius = radius
 
     @property
@@ -16,8 +18,3 @@ class Circle(Figure):
     def perimeter(self):
         per = self.radius * 2 * 3.14
         return per.__round__(2)
-
-
-circle = Circle(4)
-print(circle.area)
-print(circle.perimeter)

@@ -3,8 +3,10 @@ from Figure import Figure
 
 class Square(Figure):
     name = "square"
+    _abstract = False
 
     def __init__(self, side):
+        super().__init__()
         self.side = side
 
     @property
@@ -16,9 +18,3 @@ class Square(Figure):
     def perimeter(self):
         per = self.side * 4
         return per.__round__(2)
-
-
-square = Square(5)
-print(square.area, square.perimeter)
-print(square.name)
-print(square.add_area(square))
