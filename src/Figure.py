@@ -10,7 +10,7 @@ class Figure(object):
             raise NotImplementedError('Cannot instantiate abstract base class')
 
     def add_area(self, figure):
-        if figure.name not in Figure.figures:
-            raise ValueError('Wrong class!')
-        else:
+        if figure.name in Figure.figures:
             return self.area + figure.area
+        else:
+            raise ValueError('Wrong class!')

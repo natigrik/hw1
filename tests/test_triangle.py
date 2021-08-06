@@ -1,4 +1,5 @@
 import math
+import pytest
 
 
 def test_create_triangle(triangle):
@@ -9,16 +10,9 @@ def test_fail_create_triangle(triangle_fail):
     assert triangle_fail is None
 
 
-def test_triangle_has_name(triangle):
-    assert hasattr(triangle, "name")
-
-
-def test_triangle_has_area(triangle):
-    assert hasattr(triangle, "area")
-
-
-def test_triangle_has_perimeter(triangle):
-    assert hasattr(triangle, "perimeter")
+@pytest.mark.parametrize("attribute", ["name", "area", "perimeter"])
+def test_triangle_has_attribute(triangle, attribute):
+    assert hasattr(triangle, attribute)
 
 
 def test_triangle_area(triangle):
@@ -44,14 +38,6 @@ def test_triangle_add_area_circle(triangle, circle):
     assert triangle.add_area(circle) == triangle.area + circle.area
 
 
-# def test_create_square(square):
-#     assert square
-#
-#
-# def test_create_wrong_square(square):
-#     assert square is None
-#
-#
-# def test_create_rectangle(rectangle):
-#     print(rectangle.first_side, rectangle.second_side)
-#     assert rectangle
+def test_triangle_add_area_other(triangle, other):
+    triangle.add_area(other)
+    assert pytest.raises(ValueError)

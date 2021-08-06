@@ -1,3 +1,6 @@
+import math
+
+
 from src.Figure import Figure
 
 
@@ -7,14 +10,18 @@ class Circle(Figure):
 
     def __init__(self, radius):
         super().__init__()
-        self.radius = radius
+
+    def __new__(cls, radius):
+        if radius > 0:
+            cls.radius = radius
+            return super().__new__(cls)
 
     @property
     def area(self):
-        s = (self.radius ** 2) * 3.14
+        s = (self.radius ** 2) * math.pi
         return s.__round__(2)
 
     @property
     def perimeter(self):
-        per = self.radius * 2 * 3.14
+        per = self.radius * 2 * math.pi
         return per.__round__(2)

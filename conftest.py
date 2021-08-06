@@ -7,26 +7,46 @@ from src.Circle import Circle
 from src.Rectangle import Rectangle
 
 
-@pytest.fixture(params=[[2, 3, 4], [3, 4, 5]])
+@pytest.fixture(scope="session", params=[[2, 3, 4], [3, 4, 5]])
 def triangle(request):
     return Triangle(request.param[0], request.param[1], request.param[2])
 
 
-@pytest.fixture(params=[[0, 0, 0], [2, 3, 50], [2, 3, -4]])
-def triangle_fail(request):
-    return Triangle(request.param[0], request.param[1], request.param[2])
-
-
-@pytest.fixture(params=[[5, 10], [2, 3]])
+@pytest.fixture(scope="session", params=[[5, 10], [2, 3]])
 def rectangle(request):
     return Rectangle(request.param[0], request.param[1])
 
 
-@pytest.fixture(params=[10])
+@pytest.fixture(scope="session", params=[10])
 def square(request):
     return Square(request.param)
 
 
-@pytest.fixture(params=[3, 5])
+@pytest.fixture(scope="session", params=[3, 5])
 def circle(request):
     return Circle(request.param)
+
+
+@pytest.fixture(scope="session", params=[[0, 0, 0], [2, 30, 5], [2, 3, -4]])
+def triangle_fail(request):
+    return Triangle(request.param[0], request.param[1], request.param[2])
+
+
+@pytest.fixture(scope="session", params=[[0, 0], [2, -4]])
+def rectangle_fail(request):
+    return Rectangle(request.param[0], request.param[1])
+
+
+@pytest.fixture(scope="session", params=[0,  -4])
+def square_fail(request):
+    return Square(request.param)
+
+
+@pytest.fixture(scope="session", params=[0,  -4])
+def circle_fail(request):
+    return Circle(request.param)
+
+
+@pytest.fixture(scope="session")
+def other():
+    return 2

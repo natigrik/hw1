@@ -7,8 +7,12 @@ class Rectangle(Figure):
 
     def __init__(self, first_side, second_side):
         super().__init__()
-        self.first_side = first_side
-        self.second_side = second_side
+
+    def __new__(cls, first_side, second_side):
+        if first_side > 0 and second_side > 0:
+            cls.first_side = first_side
+            cls.second_side = second_side
+            return super().__new__(cls)
 
     @property
     def area(self):
