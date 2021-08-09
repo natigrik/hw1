@@ -26,6 +26,7 @@ def test_triangle_perimeter(triangle):
     assert triangle.perimeter == per.__round__(2)
 
 
+# Не нашла, возможно ли передавать в параметры теста вызов фикстуры, поэтому отдельные тесты на все классы
 def test_triangle_add_area_square(triangle, square):
     assert triangle.add_area(square) == triangle.area + square.area
 
@@ -39,5 +40,5 @@ def test_triangle_add_area_circle(triangle, circle):
 
 
 def test_triangle_add_area_other(triangle, other):
-    triangle.add_area(other)
-    assert pytest.raises(ValueError)
+    with pytest.raises(ValueError):
+        triangle.add_area(other)

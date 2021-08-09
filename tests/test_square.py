@@ -25,6 +25,7 @@ def test_square_perimeter(square):
     assert square.perimeter == per.__round__(2)
 
 
+# Не нашла, возможно ли передавать в параметры теста вызов фикстуры, поэтому отдельные тесты на все классы
 def test_square_add_area_rectangle(square, rectangle):
     assert square.add_area(rectangle) == square.area + rectangle.area
 
@@ -35,3 +36,8 @@ def test_square_add_area_triangle(square, triangle):
 
 def test_square_add_area_circle(square, circle):
     assert square.add_area(circle) == square.area + circle.area
+
+
+def test_square_add_area_other(square, other):
+    with pytest.raises(ValueError):
+        square.add_area(other)
